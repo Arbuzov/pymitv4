@@ -40,7 +40,7 @@ class Discover:
         return tvs
 
     @staticmethod
-    def check_ip(ip_address, log=False, request_timeout=0.1):
+    def check_ip(ip_address, log=False, request_timeout=1):
         """Attempts a connection to the TV and checks if there really is a TV."""
         if log:
             print('Checking ip: {}...'.format(ip_address))

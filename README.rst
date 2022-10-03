@@ -1,7 +1,7 @@
 pymitv
 ======
 
-A Python 3 based control of the Mi Tv 3(s)
+A Python 3 based control of the Mi Tv 4(s)
 
 .. figure:: https://i.imgur.com/kOLWhWU.jpg
    :alt: The Mi TV 3s 65-inch

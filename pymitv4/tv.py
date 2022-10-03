@@ -1,6 +1,6 @@
 """Contains the class for interfacing with the TV."""
-from pymitv import Control
-from pymitv import Navigator
+from pymitv4 import Control
+from pymitv4 import Navigator
 
 
 class TV:
@@ -40,7 +40,7 @@ using any of the polyfill controls, could produce weird results.')
         return Control().send_keystrokes(self.ip_address, keystroke, wait)
 
         # Send True regardless of whether or not command was sent
-        #return True
+        # return True
 
     def change_source(self, source):
         """Change source of xiaomi tv"""
