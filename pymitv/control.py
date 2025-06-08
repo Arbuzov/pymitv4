@@ -7,7 +7,7 @@ import requests
 
 
 class Control:
-    """A virtual remove control for the TV."""
+    """A virtual remote control for the TV."""
     turn_on = ['power']
     turn_off = ['power']
     sleep = ['power', 'wait', 'right', 'wait', 'right', 'wait', 'enter']
