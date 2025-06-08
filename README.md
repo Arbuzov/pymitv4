@@ -172,3 +172,25 @@ Instead of `KEYCODE`, you should write an actual keycode. These are the availabl
 | Menu | `menu` | Opens options menu |
 | Volume up | `volumeup` | Increases volume by 1 |
 | Volume down | `volumedown` | Decreases volume by 1 |
+
+### Additional controller endpoints
+
+#### Get system information
+`http://TV_IP:6095/controller?action=getsysteminfo`
+
+Returns a JSON object containing information like device ID and MAC addresses.
+
+#### Capture screen
+`http://TV_IP:6095/controller?action=capturescreen`
+
+Returns a binary screenshot of the current screen.
+
+#### Get installed applications
+`http://TV_IP:6095/controller?action=getinstalledapp&count=999&changeIcon=1`
+
+Provides a JSON list of installed applications along with icon URLs.
+
+#### Start an application
+`http://TV_IP:6095/controller?action=startapp&type=packagename&packagename=PACKAGE_NAME`
+
+Starts the specified application on the TV.

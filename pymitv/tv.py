@@ -124,6 +124,22 @@ using any of the polyfill controls, could produce weird results.')
         """Mutes the TV."""
         return Control().mute(self.ip_address)
 
+    def get_system_info(self):
+        """Retrieve system information from the TV."""
+        return Control().get_system_info(self.ip_address)
+
+    def capture_screen(self):
+        """Capture the current screen as bytes."""
+        return Control().capture_screen(self.ip_address)
+
+    def get_installed_apps(self, count=999, change_icon=1):
+        """Get list of installed applications."""
+        return Control().get_installed_apps(self.ip_address, count, change_icon)
+
+    def start_app(self, package_name, app_type='packagename'):
+        """Start an application identified by its package name."""
+        return Control().start_app(self.ip_address, package_name, app_type)
+
     def set_source(self, source):
         """Selects and saves source."""
         route = Navigator(source=self.source).navigate_to_source(source)

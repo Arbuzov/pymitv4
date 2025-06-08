@@ -7,7 +7,7 @@ import requests
 
 
 class Control:
-    """A virtual remove control for the TV."""
+    """A virtual remote control for the TV."""
     turn_on = ['power']
     turn_off = ['power']
     sleep = ['power', 'wait', 'right', 'wait', 'right', 'wait', 'enter']
@@ -95,3 +95,43 @@ class Control:
 
         volume = json.loads(request.json()['data'])['volum']
         return volume
+
+    @staticmethod
+    def get_system_info(ip_address):
+        """Return system information for the TV."""
+        tv_url = 'http://{}:6095/controller?action=getsysteminfo'.format(ip_address)
+        request = requests.get(tv_url)
+        if request.status_code != 200:
+            return None
+        return request.json()
+
+    @staticmethod
+    def capture_screen(ip_address):
+        """Capture the current TV screen and return the raw response."""
+        tv_url = 'http://{}:6095/controller?action=capturescreen'.format(ip_address)
+        request = requests.get(tv_url)
+        if request.status_code != 200:
+            return None
+        return request.content
+
+    @staticmethod
+    def get_installed_apps(ip_address, count=999, change_icon=1):
+        """Return list of installed applications."""
+        tv_url = (
+            'http://{}:6095/controller?action=getinstalledapp&count={}&changeIcon={}'
+        ).format(ip_address, count, change_icon)
+        request = requests.get(tv_url)
+        if request.status_code != 200:
+            return None
+        return request.json()
+
+    @staticmethod
+    def start_app(ip_address, package_name, app_type='packagename'):
+        """Start an application on the TV."""
+        tv_url = (
+            'http://{}:6095/controller?action=startapp&type={}&packagename={}'
+        ).format(ip_address, app_type, package_name)
+        request = requests.get(tv_url)
+        if request.status_code != 200:
+            return False
+        return True
