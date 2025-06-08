@@ -33,6 +33,14 @@ Documentation
 -------------
 You can find the documentation on Github here_.
 
+Additional controller endpoints
+------------------------------
+
+- ``/controller?action=getsysteminfo`` returns system information in JSON
+- ``/controller?action=capturescreen`` grabs a screenshot in binary form
+- ``/controller?action=getinstalledapp&count=999&changeIcon=1`` lists installed apps
+- ``/controller?action=startapp&type=packagename&packagename=PACKAGE`` starts a package
+
 
 .. _one.: http://www.mi.com/en/mitv3s/65/
 .. _here: https://github.com/fattdev/pymitv
