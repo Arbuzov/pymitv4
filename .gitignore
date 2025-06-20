@@ -107,3 +107,6 @@ ENV/
 build/
 dist/
 public
+/.project
+/.pydevproject
+/.tern-project
