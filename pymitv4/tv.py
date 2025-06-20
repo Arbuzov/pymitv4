@@ -14,10 +14,9 @@ class TV:
         if ip_address is None:
             print('No TV supplied, hence it won\'t work')
 
-        # Check if TV has been initialized for pymitv control
+        # Check if TV has been initialized for pymitv4 control
         if initialized is False:
-            print('If the TV hasn\'t been setup for full pymitv control, \
-using any of the polyfill controls, could produce weird results.')
+            print("If the TV hasn't been setup for full pymitv4 control, using any of the polyfill controls could produce weird results.")
 
         # Make IP address global regardless of value
         self.ip_address = ip_address
@@ -123,6 +122,22 @@ using any of the polyfill controls, could produce weird results.')
     def mute(self):
         """Mutes the TV."""
         return Control().mute(self.ip_address)
+
+    def get_system_info(self):
+        """Retrieve system information from the TV."""
+        return Control().get_system_info(self.ip_address)
+
+    def capture_screen(self):
+        """Capture the current screen as bytes."""
+        return Control().capture_screen(self.ip_address)
+
+    def get_installed_apps(self, count=999, change_icon=1):
+        """Get list of installed applications."""
+        return Control().get_installed_apps(self.ip_address, count, change_icon)
+
+    def start_app(self, package_name, app_type='packagename'):
+        """Start an application identified by its package name."""
+        return Control().start_app(self.ip_address, package_name, app_type)
 
     def set_source(self, source):
         """Selects and saves source."""

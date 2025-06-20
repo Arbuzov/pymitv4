@@ -1,6 +1,4 @@
-"""
-The pymitv.Discover module is in charge of discovering local TVs.
-"""
+"""The pymitv4.Discover module handles discovery of local TVs."""
 import socket
 import requests
 
@@ -17,7 +15,7 @@ class Discover:
 
         # Check if base_ip has been passed
         if base_ip == 0:
-            # Find IP address of computer pymitv is running on
+            # Find IP address of computer pymitv4 is running on
             sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
             sock.connect(("8.8.8.8", 80))
             ip_address = sock.getsockname()[0]

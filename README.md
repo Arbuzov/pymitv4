@@ -1,29 +1,28 @@
-# pymitv
-A Python 3 based control of the Mi Tv 3(s)
+# pymitv4
+A Python 3 based control for Xiaomi TV 4
 
-![The Mi TV 3s 65-inch](https://i.imgur.com/kOLWhWU.jpg)
+![Xiaomi TV 4](https://i.imgur.com/kOLWhWU.jpg)
 
 ## Introduction
-This package was developed to interface with the Xiaomi TV 3 series through their local HTTP API using Python. The package has both the ability to discover TVs and control them. The TV lineup in question is this [one.](http://www.mi.com/en/mitv3s/65/) It should be noted, that all the TV logic and hardware is in the soundbar. Thus, if you have a soundbar that looks identical to the one in the picture, you should be golden with this library.
+This package was developed to interface with the Xiaomi TV 4 series through their local HTTP API using Python. The package has both the ability to discover TVs and control them. Support for the previous Xiaomi TV 3 series is no longer guaranteed.
 
 ##### Supported models
-- Mi TV 3s (all sizes)
+- Xiaomi TV 4 (all sizes)
 
-##### Not sure if supported models
-- Mi TV 4A (all sizes)
-- Mi TV 4c (all sizes)
+##### Compatibility notes
+- Xiaomi TV 3 models may not work with this version
 
 ## Installing
 Easy as pie! Just use `pip`.
 
 **Most systems**
 ```
-pip install pymitv
+pip install pymitv4
 ```
 
 **Or if you have multiple Python versions**
 ```
-python3 -m pip install pymitv
+python3 -m pip install pymitv4
 ```
 
 ## Usage
@@ -43,7 +42,7 @@ This method is used to scan the local network for TVs.
 **Example usage**
 
 ```python
-import Discover from pymitv
+import Discover from pymitv4
 
 discover = Discover.scan()
 print(discover)
@@ -61,7 +60,7 @@ Used by `Discover.scan()` to check if a TV is present at the IP.
 **Example usage**
 
 ```python
-import Discover from pymitv
+import Discover from pymitv4
 
 print(Discover().check_ip('192.168.0.45'))
 ```
@@ -102,7 +101,7 @@ Using this keyword in a sequence of keystrokes will make the method sleep for 0.
 **Example usage**
 
 ```python
-import Control from pymitv
+import Control from pymitv4
 
 Control().sendKeystrokes(Control.sleep)
 ```
@@ -113,7 +112,7 @@ There is a class representation of the TV which will take an IP address. It has 
 **Example usage**
 
 ```python
-from pymitv import TV
+from pymitv4 import TV
 
 tv = TV('192.168.0.41')
 
@@ -172,3 +171,25 @@ Instead of `KEYCODE`, you should write an actual keycode. These are the availabl
 | Menu | `menu` | Opens options menu |
 | Volume up | `volumeup` | Increases volume by 1 |
 | Volume down | `volumedown` | Decreases volume by 1 |
+
+### Additional controller endpoints
+
+#### Get system information
+`http://TV_IP:6095/controller?action=getsysteminfo`
+
+Returns a JSON object containing information like device ID and MAC addresses.
+
+#### Capture screen
+`http://TV_IP:6095/controller?action=capturescreen`
+
+Returns a binary screenshot of the current screen.
+
+#### Get installed applications
+`http://TV_IP:6095/controller?action=getinstalledapp&count=999&changeIcon=1`
+
+Provides a JSON list of installed applications along with icon URLs.
+
+#### Start an application
+`http://TV_IP:6095/controller?action=startapp&type=packagename&packagename=PACKAGE_NAME`
+
+Starts the specified application on the TV.
