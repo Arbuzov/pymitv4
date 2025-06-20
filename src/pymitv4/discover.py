@@ -1,5 +1,6 @@
 """The ``pymitv4.discover`` module handles discovery of local TVs."""
 import socket
+
 import requests
 
 

@@ -1,6 +1,7 @@
 """The ``pymitv4.control`` module sends keystrokes to the TV."""
-import time
 import json
+import time
+
 import requests
 
 
