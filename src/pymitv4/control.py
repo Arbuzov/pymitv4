@@ -28,7 +28,9 @@ class Control:
     @staticmethod
     def send_keystrokes(ip_address, keystrokes, wait=False):
         """Connects to TV and sends keystroke via HTTP."""
-        tv_url = 'http://{}:6095/controller?action=keyevent&keycode='.format(ip_address)
+        tv_url = (
+            f"http://{ip_address}:6095/controller?action=keyevent&keycode="
+        )
 
         for keystroke in keystrokes:
             if keystroke == 'wait' or wait is True:
@@ -45,7 +47,9 @@ class Control:
     @staticmethod
     def change_source(ip_address, source):
         """Select source hdmi1 or hdmi2"""
-        tv_url = 'http://{}:6095/controller?action=changesource&source='.format(ip_address)
+        tv_url = (
+            f"http://{ip_address}:6095/controller?action=changesource&source="
+        )
         source = source
         request = requests.get(tv_url + source)
         if request.status_code != 200:
@@ -56,7 +60,9 @@ class Control:
     @staticmethod
     def mute(ip_address):
         """Polyfill for muting the TV."""
-        tv_url = 'http://{}:6095/controller?action=keyevent&keycode='.format(ip_address)
+        tv_url = (
+            f"http://{ip_address}:6095/controller?action=keyevent&keycode="
+        )
 
         count = 0
         while count > 30:
@@ -74,9 +80,12 @@ class Control:
         request_timeout = 0.1
 
         try:
-            tv_url = 'http://{}:6095/request?action=isalive'.format(ip_address)
+            tv_url = f"http://{ip_address}:6095/request?action=isalive"
             requests.get(tv_url, timeout=request_timeout)
-        except (requests.exceptions.ConnectTimeout, requests.exceptions.ConnectionError):
+        except (
+            requests.exceptions.ConnectTimeout,
+            requests.exceptions.ConnectionError,
+        ):
             return False
 
         return True
@@ -87,9 +96,12 @@ class Control:
         request_timeout = 0.1
 
         try:
-            tv_url = 'http://{}:6095/general?action=getVolum'.format(ip_address)
+            tv_url = f"http://{ip_address}:6095/general?action=getVolum"
             request = requests.get(tv_url, timeout=request_timeout)
-        except (requests.exceptions.ConnectTimeout, requests.exceptions.ConnectionError):
+        except (
+            requests.exceptions.ConnectTimeout,
+            requests.exceptions.ConnectionError,
+        ):
             return False
 
         volume = json.loads(request.json()['data'])['volum']
@@ -98,7 +110,7 @@ class Control:
     @staticmethod
     def get_system_info(ip_address):
         """Return system information for the TV."""
-        tv_url = 'http://{}:6095/controller?action=getsysteminfo'.format(ip_address)
+        tv_url = f"http://{ip_address}:6095/controller?action=getsysteminfo"
         request = requests.get(tv_url)
         if request.status_code != 200:
             return None
@@ -107,7 +119,7 @@ class Control:
     @staticmethod
     def capture_screen(ip_address):
         """Capture the current TV screen and return the raw response."""
-        tv_url = 'http://{}:6095/controller?action=capturescreen'.format(ip_address)
+        tv_url = f"http://{ip_address}:6095/controller?action=capturescreen"
         request = requests.get(tv_url)
         if request.status_code != 200:
             return None
@@ -117,8 +129,9 @@ class Control:
     def get_installed_apps(ip_address, count=999, change_icon=1):
         """Return list of installed applications."""
         tv_url = (
-            'http://{}:6095/controller?action=getinstalledapp&count={}&changeIcon={}'
-        ).format(ip_address, count, change_icon)
+            f"http://{ip_address}:6095/controller?"
+            f"action=getinstalledapp&count={count}&changeIcon={change_icon}"
+        )
         request = requests.get(tv_url)
         if request.status_code != 200:
             return None

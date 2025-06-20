@@ -40,14 +40,17 @@ class Discover:
 
     @staticmethod
     def check_ip(ip_address, log=False, request_timeout=0.1):
-        """Attempts a connection to the TV and checks if there really is a TV."""
+        """Attempt a connection to the TV and ensure it exists."""
         if log:
             print('Checking ip: {}...'.format(ip_address))
 
         try:
-            tv_url = 'http://{}:6095/request?action=isalive'.format(ip_address)
+            tv_url = f"http://{ip_address}:6095/request?action=isalive"
             request = requests.get(tv_url, timeout=request_timeout)
-        except (requests.exceptions.ConnectTimeout, requests.exceptions.ConnectionError):
+        except (
+            requests.exceptions.ConnectTimeout,
+            requests.exceptions.ConnectionError,
+        ):
             return False
 
         return request.status_code == 200
