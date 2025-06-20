@@ -1,32 +1,29 @@
-pymitv
-======
+pymitv4
+=======
 
-A Python 3 based control of the Mi Tv 3(s)
+A Python 3 based control for Xiaomi TV 4
 
 .. figure:: https://i.imgur.com/kOLWhWU.jpg
-   :alt: The Mi TV 3s 65-inch
+   :alt: Xiaomi TV 4
 
-The Mi TV 3s 65-inch
+Xiaomi TV 4 series
 
 Introduction
 ------------
 
-This package was developed to interface with the Xiaomi TV 3 series
-through their local HTTP API using Python. The package has both the
-ability to discover TVs and control them. The TV lineup in question is
-this `one.`_ It should be noted, that all the TV logic and hardware is
-in the soundbar. Thus, if you have a soundbar that looks identical to
-the one in the picture, you should be golden with this library.
+This package interfaces with the Xiaomi TV 4 series through its local
+HTTP API using Python. Discovery and control features are included.
+Support for Xiaomi TV 3 devices is no longer guaranteed.
 
 Supported models
 ''''''''''''''''
 
-- Mi TV 3s (all sizes)
+- Xiaomi TV 4 (all sizes)
 
-Not sure if supported models
-''''''''''''''''''''''''''''
+Compatibility notes
+''''''''''''''''''''
 
-- Mi TV 4A (all sizes)
+- Xiaomi TV 3 models may not work with this version
 
 
 Documentation
@@ -42,5 +39,5 @@ Additional controller endpoints
 - ``/controller?action=startapp&type=packagename&packagename=PACKAGE`` starts a package
 
 
-.. _one.: http://www.mi.com/en/mitv3s/65/
-.. _here: https://github.com/fattdev/pymitv
+.. _one.: http://www.mi.com/en/mitv4/65/
+.. _here: https://github.com/Arbuzov/pymitv4

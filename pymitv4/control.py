@@ -1,6 +1,4 @@
-"""
-The pymitv.Control module is in charge of sending keystrokes to the TV.
-"""
+"""The pymitv4.Control module sends keystrokes to the TV."""
 import time
 import json
 import requests
