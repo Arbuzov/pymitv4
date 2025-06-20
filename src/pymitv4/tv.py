@@ -3,19 +3,29 @@ from pymitv4 import Control, Navigator
 
 
 class TV:
-    """A virtual representation of the TV that stores state, and takes controls."""
+    """A representation of the TV that stores state and handles controls."""
     ip_address = None
     state = True
     source = None
 
-    def __init__(self, ip_address=None, source=None, initialized=True, assume_state=True):
+    def __init__(
+        self,
+        ip_address=None,
+        source=None,
+        initialized=True,
+        assume_state=True,
+    ):
         # Check if an IP address has been supplied to the constructor
         if ip_address is None:
             print('No TV supplied, hence it won\'t work')
 
         # Check if TV has been initialized for pymitv4 control
         if initialized is False:
-            print("If the TV hasn't been setup for full pymitv4 control, using any of the polyfill controls could produce weird results.")
+            print(
+                "If the TV hasn't been setup for full pymitv4 control, "
+                "using any of the polyfill controls could produce weird "
+                "results."
+            )
 
         # Make IP address global regardless of value
         self.ip_address = ip_address
@@ -38,7 +48,7 @@ class TV:
         return Control().send_keystrokes(self.ip_address, keystroke, wait)
 
         # Send True regardless of whether or not command was sent
-        #return True
+        # return True
 
     def change_source(self, source):
         """Change source of xiaomi tv"""
@@ -132,7 +142,11 @@ class TV:
 
     def get_installed_apps(self, count=999, change_icon=1):
         """Get list of installed applications."""
-        return Control().get_installed_apps(self.ip_address, count, change_icon)
+        return Control().get_installed_apps(
+            self.ip_address,
+            count,
+            change_icon,
+        )
 
     def start_app(self, package_name, app_type='packagename'):
         """Start an application identified by its package name."""

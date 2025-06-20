@@ -6,3 +6,5 @@ from pymitv4.control import Control
 from pymitv4.discover import Discover
 from pymitv4.navigator import Navigator
 from pymitv4.tv import TV
+
+__all__ = ["Control", "Discover", "Navigator", "TV"]
