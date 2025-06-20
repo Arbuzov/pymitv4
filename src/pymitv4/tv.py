@@ -1,6 +1,5 @@
 """Contains the class for interfacing with the TV."""
-from pymitv4 import Control
-from pymitv4 import Navigator
+from pymitv4 import Control, Navigator
 
 
 class TV:

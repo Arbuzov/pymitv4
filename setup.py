@@ -9,8 +9,7 @@ https://github.com/pypa/sampleproject
 from codecs import open
 from os import path
 
-from setuptools import setup, find_packages
-
+from setuptools import find_packages, setup
 
 # To use a consistent encoding
 here = path.abspath(path.dirname(__file__))
