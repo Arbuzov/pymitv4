@@ -1,6 +1,4 @@
-"""
-The pymitv.Control module is in charge of sending keystrokes to the TV.
-"""
+"""The ``pymitv4.control`` module sends keystrokes to the TV."""
 import time
 import json
 import requests
@@ -124,6 +122,14 @@ class Control:
         if request.status_code != 200:
             return None
         return request.json()
+
+    @staticmethod
+    def get_apps(ip_address):
+        """Compatibility wrapper for ``get_installed_apps``."""
+        apps = Control.get_installed_apps(ip_address)
+        if apps is None:
+            return False
+        return apps.get('data') if isinstance(apps, dict) else apps
 
     @staticmethod
     def start_app(ip_address, package_name, app_type='packagename'):

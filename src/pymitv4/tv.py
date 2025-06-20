@@ -14,10 +14,9 @@ class TV:
         if ip_address is None:
             print('No TV supplied, hence it won\'t work')
 
-        # Check if TV has been initialized for pymitv control
+        # Check if TV has been initialized for pymitv4 control
         if initialized is False:
-            print('If the TV hasn\'t been setup for full pymitv control, \
-using any of the polyfill controls, could produce weird results.')
+            print("If the TV hasn't been setup for full pymitv4 control, using any of the polyfill controls could produce weird results.")
 
         # Make IP address global regardless of value
         self.ip_address = ip_address
