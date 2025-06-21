@@ -1,3 +1,6 @@
 isort
 flake8
 pytest
+coverage
+coverage-badge
+pytest-cov

@@ -2,6 +2,7 @@
 A Python 3 based control for Xiaomi TV 4
 
 ![Xiaomi TV 4](https://i.imgur.com/kOLWhWU.jpg)
+![coverage](coverage.svg)
 
 ## Introduction
 This package was developed to interface with the Xiaomi TV 4 series through their local HTTP API using Python. The package has both the ability to discover TVs and control them. Support for the previous Xiaomi TV 3 series is no longer guaranteed.
